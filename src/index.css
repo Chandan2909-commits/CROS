@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+:root {
+  /* Surfaces & Canvas (ONIX Executive Light-Mode) */
+  --background: #ffffff;
+  --foreground: #111827;
+  --bg-app: #f8f9fa;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f4f5f7;
+  --bg-sidebar: #ffffff;
+
+  /* Brand & Contrast (Onyx Black Engine) */
+  --primary: #1e1e1e;
+  --primary-hover: #111111;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f5f7;
+  --secondary-foreground: #1e1e1e;
+  
+  /* Accents */
+  --color-accent: #1d4ed8;
+  --color-accent-hover: #1e40af;
+  --color-accent-light: #eff6ff;
+  
+  /* Status Colors */
+  --color-success: #10b981;
+  --color-success-light: #ecfdf5;
+  --color-warning: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-danger: #ef4444;
+  --color-danger-light: #fee2e2;
+
+  /* Text Hierarchy */
+  --text-primary: #111827;
+  --text-secondary: #475569;
+  --text-muted: #6b7280;
+
+  /* Borders & Shadows */
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.01);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.06), 0 4px 8px rgba(15, 23, 42, 0.02);
+  --shadow-brand: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-app);
+  letter-spacing: -0.011em;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Universal Ultra-Slim Custom Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.35) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 116, 139, 0.6);
+}
+
+/* Micro-interaction primitives */
+.btn-press {
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-press:active {
+  transform: scale(0.96);
+}
+
+/* Running progress loader */
+@keyframes runningLoader {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(30%); }
+  100% { transform: translateX(200%); }
+}
+
+.running-loader-bar {
+  animation: runningLoader 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Modal Spring Animation */
+@keyframes modalSpring {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-spring-modal {
+  animation: modalSpring 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Pulse animation for active shift */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.92); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Thermal receipt print styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #thermal-receipt, #thermal-receipt * {
+    visibility: visible;
+  }
+  #thermal-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm;
+    margin: 0;
+    padding: 10px;
+    background: white;
+    color: black;
+  }
+}
